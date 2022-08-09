@@ -1,0 +1,194 @@
+body {
+    text-align: center;
+
+}
+
+.about-bg{
+    padding-top: 20%;
+    padding-bottom: 20%;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.theculturetrip.com%2Fwp-content%2Fuploads%2F2014%2F02%2F23782351913_0aed2b997e_k.jpg&f=1&nofb=1");
+    background-size: cover;
+    text-shadow: 3px 5px 6px black;
+}
+
+
+#services {
+    padding-top: 10%;
+    /* padding-bottom: 10%; */
+}
+
+#teachers {
+    padding-top: 10%;
+    /* padding-bottom: 10%; */
+}
+
+#schedule {
+    padding-top: 10%;
+}
+
+#contact {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.map {
+    padding-top: 5%;
+}
+
+.txt {
+    /* background: rgba(192, 192, 192, 0.4); */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    color: white;
+    
+}
+
+.price {
+    padding-top: 5%;
+    padding-bottom: 5%; 
+}
+
+.image-price {
+    height: 30rem;
+}
+
+.cimg {
+    height: 25rem;
+    /* border-radius: 100%; */
+}
+
+.carousel-item {
+    padding: 5%;
+}
+
+.carousel-control-prev-icon {
+background-color: black;
+}
+
+.carousel-control-next-icon {
+    background-color: black;
+    }
+
+.menu {
+    text-align: left;
+    margin-top: 15rem;
+    padding: 5%;
+    
+}
+
+.users {
+    margin-top: 5rem;
+    padding: 5%;
+}
+
+
+.flash-message {
+    color: orangered;
+}
+
+.add_user {
+    margin-top: 1rem;
+}
+
+.teachers {
+    margin-top: 2rem;
+
+     
+}
+.teacher_block {
+    padding-bottom: 2rem;
+}
+.tavatar {
+    height: 7rem;
+    border-radius: 100%;
+}
+.ttext{
+    text-align: left;
+}
+
+.timage {
+    text-align: right;
+}
+/* 
+.add_user {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    display: inline-block;
+} */
+
+.user_name {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.user_email{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    display: inline-block;
+} 
+
+.user_password {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.sign_button {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+/* .form-group.required {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    display: inline-block;
+} */
+
+.upload_photo {
+    padding-top: 1rem;
+}
+
+.submit_button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#path_photo {
+    margin-top: 1rem;
+}
+
+#submit {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+#courses {
+    padding-top: 10%;
+}
+
+.cavatar {
+    height: 10rem;
+}
+
+.course_block {
+    padding-bottom: 2rem;
+}
+
+#enter {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
