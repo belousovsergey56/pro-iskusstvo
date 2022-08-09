@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Добавить курс{% endblock %}
+
+{% block link %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('menu') }}">Главное меню</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_user') }}">Пользователи</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_teacher') }}">Учителя</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">Расписание</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('home') }}">Выход</a>
+</li>
+{% endblock %}
+
+{% block body %}
+
+<section id="courses">
+    <div class="container courses">
+        {% for database in courses: %}
+        <div class="row g-0 text-center course_block">
+
+            <div class="col-sm-6 col-md-8 ttext">
+                <h4>{{ database.id }}.
+                    {{ database.name }}
+                </h4>
+                <p></p>
+                <h6>{{ database.description }}</h6>
+                <p></p>
+                <h6>{{ database.price }} руб.</h6>
+                <hr>
+            </div>
+            <div class="col-6 col-md-4 timage">
+                <img class='cavatar' src="{{ database.avatar }}" alt="avatar">
+                <a href="{{ url_for('edit_course', course_id=database.id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                </th>
+                <a href="{{ url_for('delete_course', course_id=database.id) }}"><i
+                        class="fa-solid fa-trash-can"></i></a>
+                </th>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="add_course">
+    <div class="container add_course_form">
+        {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+        {% for message in messages: %}
+        <p class="flash-message">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"enter": "primary"}) }}
+    </div>
+</section>
+
+{% endblock %}
