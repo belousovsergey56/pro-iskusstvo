@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Главное меню{% endblock %}
+
+{% block link %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('home') }}">Выход</a>
+</li>
+ {% endblock %}
+
+
+{% block body %}
+
+<section id="menu">
+    <div class="container menu border">
+        <h2><a href="{{ url_for('add_user') }}" class="link-secondary" style="text-decoration: none;">1. Добавить пользователя</a></h2>
+        <br>
+        <h2><a href="{{ url_for('add_teacher') }}" class="link-secondary" style="text-decoration: none;">2. Добавить преподавателя</a></h2>
+        <br>
+        <h2><a href="{{ url_for('add_course') }}" class="link-secondary" style="text-decoration: none;">3. Добавить курс</a></h2>
+        <br>
+        <h2><a href="{{ url_for('add_schelude') }}" class="link-secondary" style="text-decoration: none;">4. Ведение расписания</a></h2>
+    </div>
+</section>
+
+{% endblock %}
