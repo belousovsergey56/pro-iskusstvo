@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Добавить преподавателя{% endblock %}
+
+{% block link %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('menu') }}">Главное меню</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_user') }}">Пользователи</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_course') }}">Курсы</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">Расписание</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('home') }}">Выход</a>
+</li>
+{% endblock %}
+
+{% block body %}
+
+<section id="teachers">
+    <div class="container teachers">
+        {% for database in teachers: %}
+        <div class="row g-0 text-center teacher_block">
+
+            <div class="col-sm-6 col-md-8 ttext">
+                <h4>{{ database.id }}.
+                    {{ database.name }}
+                </h4>
+                <p></p>
+                <h6>{{ database.about }}</h6>
+                <p></p>
+                <hr>
+            </div>
+            <div class="col-6 col-md-4 timage">
+                <img class='tavatar' src="{{ database.avatar }}" alt="avatar">
+                <a href="{{ url_for('edit_teacher', teacher_id=database.id) }}"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                </th>
+                <a href="{{ url_for('delete_teacher', teacher_id=database.id) }}"><i
+                        class="fa-solid fa-trash-can"></i></a>
+                </th>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="add_teacher">
+    <div class="container add_teacher_form">
+        {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+        {% for message in messages: %}
+        <p class="flash-message">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+    </div>
+</section>
+
+{% endblock %}
