@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/0337b42812.js" crossorigin="anonymous"></script>
+
+    <title>Репин Арт - Школа искусств</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Repin Art</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">Услуги</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#teachers">Преподаватели</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#schedule">Расписание</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Контакты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('menu') }}">Enter</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="about">
+        <div class="container about-bg">
+            <div class="txt">
+
+                <h1>Добро пожаловать в РепинАрт</h1>
+                <h4>Наша школа работает с 1984 года.</h4>
+                <h4> Мы самая уважаемая школа Санк-Петербурга</h4>
+                <h4>Выходцы нашей школы самые выдающиеся мастера кисти и лепки</h4>
+                <h4>Наши преподаватели, признанные во всем мире мастера, среди которых есть наши бывшие студенты</h4>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="services">
+        <div class="container price">
+            <h1>Услуги</h1>
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active border">
+
+                        <img class="image-price" src="{{ price[0].image }}" alt="">
+                        <h5 class="card-title">{{ price[0].name }}</h5>
+                        <p>{{ price[0].descript }}</p>
+                        <p>{{ price[0].price }} руб.</p>
+
+                    </div>
+
+                    {% for services in price[1:]: %}
+                    <div class="carousel-item border">
+                        <img class="image-price" src="{{ services.image }}" alt="">
+                        <h5>{{ services.name }}</h5>
+                        <p>{{ services.descript }}</p>
+                        <p>{{ services.price }} руб.</p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="teachers">
+        <div class="container">
+            <h1>Преподаватели</h1>
+            <div class="row">
+                <div class="price col-lg-3">
+
+                    <div class="card" style="width: 18rem;">
+                        <img class="cimg"
+                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fproject_modules%2F1400%2F6a356a54364253.56093c698b72e.jpg&f=1&nofb=1"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="price col-lg-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="cimg"
+                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fproject_modules%2F2800_opt_1%2F15345c41332353.57a1ce9141249.jpg&f=1&nofb=1"
+                            alt="" srcset="">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price col-lg-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="cimg"
+                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F1e%2F26%2F87%2F1e26874caab099fc978107fb8a64c3f1--this-old-man-mughal-empire.jpg&f=1&nofb=1"
+                            alt="" srcset="">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price col-lg-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="cimg"
+                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flive.staticflickr.com%2F5289%2F5216270546_c63e5361cc_b.jpg&f=1&nofb=1"
+                            alt="" srcset="">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+
+    </section>
+    <section id="schedule">
+        <div class="container">
+
+            <h1>Расписание занятий</h1>
+
+            <table class="table table-striped table-bordered table-secondary">
+                <thead>
+                    <tr>
+                        <th scope="col">Время / День</th>
+                        <th scope="col">Понедельник</th>
+                        <th scope="col">Вторник</th>
+                        <th scope="col">Среда</th>
+                        <th scope="col">Четверг</th>
+                        <th scope="col">Пятница</th>
+                        <th scope="col">Суббота</th>
+                        <th scope="col">Воскресенье</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for k, v in d.items(): %}
+                    {% for time, name in v.items(): %}
+                    <tr>
+                        <th scope="row">{{ time }}</th>
+                        {% if k == 'понедельник': %}
+                        <td>
+                            {{name}}
+                            <br>
+                            zanyatie
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        {% elif k == 'вторник': %}
+                        <td>
+                           
+                        </td>
+                        <td> {{name}}
+                            <br>
+                            zanyatie</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        {% elif k == 'среда': %}
+                        <td>
+                            
+                        </td>
+                        <td></td>
+                        <td>
+                            {{name}}
+                            <br>
+                            zanyatie
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        {% elif k == 'четверг': %}
+                        <td>
+                            
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            {{name}}
+                            <br>
+                            zanyatie
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        {% elif k == 'пятница': %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            {{name}}
+                            <br>
+                            zanyatie
+                        </td>
+                        <td></td>
+                        <td></td>
+                        {% elif k == 'суббота': %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            {{name}}
+                            <br>
+                            zanyatie
+                        </td>
+                        <td></td>
+                        {% elif k == 'воскресенье': %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            {{name}}
+                            <br>
+                            zanyatie
+                        </td>
+
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+    </section>
+    <section id="contact">
+        <div class="container contacts">
+            <h1>Контакты</h1>
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <td>адрес</td>
+                        <td>1ая советская</td>
+                    </tr>
+                    <tr>
+                        <td>телефон</td>
+                        <td>+7-812-321-45-19</td>
+                    </tr>
+                    <tr>
+                        <td>эл.почта</td>
+                        <td>info@repin-art.ru</td>
+                    </tr>
+                    <tr>
+                        <td>соц.сети</td>
+                        <td>vk.com/repin-art</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="map">
+                <script type="text/javascript" charset="utf-8" async
+                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad8e87bfeae83ce0572ff0612a48afa2e8cf83b66efef6433a372b238d37f61c6&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"><i
+                        class="fa-brands fa-artstation"></i></a>
+                <span class="mb-3 mb-md-0 text-muted">© 2022 Repin Art, Inc</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-vk fa-lg"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-solid fa-at fa-lg"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-solid fa-phone fa-md"></i></a></li>
+            </ul>
+        </footer>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
