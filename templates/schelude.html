@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Изменить расписание{% endblock %}
+
+{% block link %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('menu') }}">Главное меню</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_teacher') }}">Пользователи</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_teacher') }}">Учителя</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('add_course') }}">Курсы</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('home') }}">Выход</a>
+</li>
+{% endblock %}
+
+{% block body %}
+
+<section id="users">
+
+    <div class="container users">
+        <table class="table table-lg table-striped table-bordered user-table">
+            <thead>
+
+            <tbody>
+                {% for database in schelude: %}
+                <tr>
+                    <th scope="row">{{ database.id }}</th>
+                    <th scope="row">{{ database.day }}</th>
+                    <th scope="row">{{ database.time }}</th>
+                    <th scope="row">{{ database.teacher }}</th>
+                    <th scope="row">{{ database.course }}</th>
+                    <th scope="row"><a href="#"><i
+                                class="fa-solid fa-pen-to-square"></i></a></th>
+                    <th scope="row"><a href="#"><i
+                                class="fa-solid fa-trash-can"></i></a></th>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </thead>
+        </table>
+    </div>
+
+</section>
+
+<section id="add_users">
+    <div class="container add_user">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+        {% for message in messages: %}
+        <p class="flash-message">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"add_schelude": "primary"}) }}
+
+    </div>
+
+</section>
+
+
+{% endblock %}
