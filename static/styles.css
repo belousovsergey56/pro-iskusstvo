@@ -192,3 +192,11 @@ background-color: black;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+#user_name,#user_email,#password,#sign {
+    width: 100%;
+    max-width: 330px;
+    margin-bottom: 15px;
+    display:inline-block;
+    
+}
