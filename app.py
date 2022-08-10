@@ -79,12 +79,12 @@ def add_user():
    form = RegisterForm()
    users = User.query.all()
    if form.validate_on_submit():
-      if User.query.filter_by(email=form.email.data).first():
+      if User.query.filter_by(email=form.user_email.data).first():
          flash(message='Пользователь с такой почтой уже существует, попробуйте ввести новую почту')
          return redirect(url_for('add_user'))
       new_user = User(
-         name = form.name.data,
-         email = form.email.data,
+         name = form.user_name.data,
+         email = form.user_email.data,
          password = generate_password_hash(form.password.data, salt_length=13)
       )
       db.session.add(new_user)
@@ -104,13 +104,13 @@ def edit_user(user_id):
    users = User.query.all()
    user = User.query.get(user_id)
    edit_form= RegisterForm(
-      name=user.name,
-      email=user.email
+      user_name=user.name,
+      user_email=user.email
       )
 
    if edit_form.validate_on_submit():
-      user.name = edit_form.name.data
-      user.email = edit_form.email.data
+      user.name = edit_form.user_name.data
+      user.email = edit_form.user_email.data
       user.password = generate_password_hash(edit_form.password.data, salt_length=13)
       db.session.commit()
       return redirect(url_for('add_user'))
