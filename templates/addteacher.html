@@ -3,24 +3,6 @@
 
 {% block title %}Добавить преподавателя{% endblock %}
 
-{% block link %}
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('menu') }}">Главное меню</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('add_user') }}">Пользователи</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('add_course') }}">Курсы</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#">Расписание</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('home') }}">Выход</a>
-</li>
-{% endblock %}
-
 {% block body %}
 
 <section id="teachers">

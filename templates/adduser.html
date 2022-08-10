@@ -3,24 +3,6 @@
 
 {% block title %}Добавить пользователя{% endblock %}
 
-{% block link %}
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('menu') }}">Главное меню</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('add_teacher') }}">Учителя</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('add_course') }}">Курсы</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="#">Расписание</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('home') }}">Выход</a>
-</li>
-{% endblock %}
-
 {% block body %}
 
 <section id="users">
@@ -64,25 +46,8 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"sign": "primary"}) }}
 
-        <form action="" method="post" class="form"  role="form" novalidate="">
-            <input id="csrf_token" name="csrf_token" type="hidden" value="ImUzNjJhMDcyNzkyNzFmMzk3NDk5ZGQ1MDI4OTNjYzI5MDZiODgyYTAi.YvFikg.B4PhRZJX5ESdkIh3WaUFcxmsC4Y">
-            <div class="user_name">
-                {{ wtf.form_field(form.name) }}
-            </div>
-
-            <div class="user_email">
-                {{ wtf.form_field(form.email) }}
-            </div>
-
-            <div class="user_password">
-                {{ wtf.form_field(form.password) }}
-            </div>
-
-            <div class="sign_button">
-                {{ wtf.form_field(form.sign, button_map={"sign": "primary"}) }}
-            </div>
-        </form>
     </div>
 
 </section>
