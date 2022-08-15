@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="#">Repin Art</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,6 +30,9 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('menu') }}">Главное меню</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_user') }}">Пользователи</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('add_teacher') }}">Учителя</a>
