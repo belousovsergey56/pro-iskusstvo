@@ -1,12 +1,30 @@
 body {
     text-align: center;
+/* fallback for old browsers */
+background: #6a85b6;
 
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 133, 182, 0.5), rgba(186, 200, 224, 0.5));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 133, 182, 0.5), rgba(186, 200, 224, 0.5))     
+}
+
+.navbar {
+/* fallback for old browsers */
+background: #6a85b6;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 133, 182, 1), rgba(186, 200, 224, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 133, 182, 1), rgba(186, 200, 224, 1))
 }
 
 .about-bg{
     padding-top: 20%;
     padding-bottom: 20%;
-    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.theculturetrip.com%2Fwp-content%2Fuploads%2F2014%2F02%2F23782351913_0aed2b997e_k.jpg&f=1&nofb=1");
+    background: url("/static/images/gallery/img4.jpeg");
     background-size: cover;
     text-shadow: 3px 5px 6px black;
 }
@@ -36,7 +54,6 @@ body {
 }
 
 .txt {
-    /* background: rgba(192, 192, 192, 0.4); */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
     color: white;
     
@@ -48,7 +65,7 @@ body {
 }
 
 .image-price {
-    height: 30rem;
+    height: 40rem;
 }
 
 .cimg {
@@ -61,11 +78,12 @@ body {
 }
 
 .carousel-control-prev-icon {
-background-color: black;
+    background-image: url('/static/images/left-arrow.png');
+    /* background-color: black; */
 }
 
 .carousel-control-next-icon {
-    background-color: black;
+    background-image: url('/static/images/right-arrow.png');
     }
 
 .menu {
@@ -199,4 +217,13 @@ background-color: black;
     margin-bottom: 15px;
     display:inline-block;
     
+}
+
+.contact-link {
+    text-decoration: none;
+    color: black;
+}
+
+.contact-link:hover {
+    color: #6a85b6;
 }
