@@ -12,12 +12,15 @@
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/0337b42812.js" crossorigin="anonymous"></script>
 
+    <!-- right arrow <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by Roundicons - Flaticon</a> -->
+    <!-- left arrow <a href="https://www.flaticon.com/free-icons/back" title="back icons">Back icons created by Roundicons - Flaticon</a> -->
+
     <title>Репин Арт - Школа искусств</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="#">Repin Art</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -68,23 +71,61 @@
         <div class="container price">
             <h1>Услуги</h1>
 
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active border">
+                    <div class="carousel-item active">
 
-                        <img class="image-price" src="{{ price[0].image }}" alt="">
-                        <h5 class="card-title">{{ price[0].name }}</h5>
-                        <p>{{ price[0].descript }}</p>
+                        <img class="image-price" src="{{ price[0].avatar }}" alt="">
+                        <h4 class="card-title">{{ price[0].name }}</h4>
+                        <h5>{{ price[0].description }}</h5>
                         <p>{{ price[0].price }} руб.</p>
 
                     </div>
 
                     {% for services in price[1:]: %}
-                    <div class="carousel-item border">
-                        <img class="image-price" src="{{ services.image }}" alt="">
-                        <h5>{{ services.name }}</h5>
-                        <p>{{ services.descript }}</p>
+                    <div class="carousel-item">
+                        <img class="image-price" src="{{ services.avatar }}" alt="">
+                        <h4>{{ services.name }}</h4>
+                        <h5>{{ services.description }}</h5>
                         <p>{{ services.price }} руб.</p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="teachers">
+        <div class="container teachers">
+            <h1>Преподаватели</h1>
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="image-price" src="{{ teachers[0].avatar }}" alt="">
+                        <h4 class="card-title">{{ teachers[0].name }}</h4>
+                        <h5>{{ teachers[0].about }}</h5>
+
+                    </div>
+
+                    {% for services in teachers[1:]: %}
+                    <div class="carousel-item">
+                        <img class="image-price" src="{{ services.avatar }}" alt="">
+                        <h4>{{ services.name }}</h4>
+                        <h5>{{ services.about }}</h5>
                     </div>
                     {% endfor %}
 
@@ -101,83 +142,14 @@
                 </button>
             </div>
         </div>
-
-
     </section>
 
-    <section id="teachers">
-        <div class="container">
-            <h1>Преподаватели</h1>
-            <div class="row">
-                <div class="price col-lg-3">
-
-                    <div class="card" style="width: 18rem;">
-                        <img class="cimg"
-                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fproject_modules%2F1400%2F6a356a54364253.56093c698b72e.jpg&f=1&nofb=1"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the card's content.</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="price col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                        <img class="cimg"
-                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fproject_modules%2F2800_opt_1%2F15345c41332353.57a1ce9141249.jpg&f=1&nofb=1"
-                            alt="" srcset="">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                        <img class="cimg"
-                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F1e%2F26%2F87%2F1e26874caab099fc978107fb8a64c3f1--this-old-man-mughal-empire.jpg&f=1&nofb=1"
-                            alt="" srcset="">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                        <img class="cimg"
-                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flive.staticflickr.com%2F5289%2F5216270546_c63e5361cc_b.jpg&f=1&nofb=1"
-                            alt="" srcset="">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        </div>
-
-    </section>
     <section id="schedule">
         <div class="container">
 
             <h1>Расписание занятий</h1>
 
-            <table class="table table-striped table-bordered table-secondary">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Время / День</th>
@@ -209,11 +181,12 @@
                         <td></td>
                         {% elif k == 'вторник': %}
                         <td>
-                           
+
                         </td>
                         <td> {{name}}
                             <br>
-                            zanyatie</td>
+                            zanyatie
+                        </td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -221,7 +194,7 @@
                         <td></td>
                         {% elif k == 'среда': %}
                         <td>
-                            
+
                         </td>
                         <td></td>
                         <td>
@@ -235,7 +208,7 @@
                         <td></td>
                         {% elif k == 'четверг': %}
                         <td>
-                            
+
                         </td>
                         <td></td>
                         <td></td>
@@ -288,10 +261,11 @@
                     </tr>
                     {% endfor %}
                     {% endfor %}
-                    
+
                 </tbody>
             </table>
     </section>
+    
     <section id="contact">
         <div class="container contacts">
             <h1>Контакты</h1>
@@ -303,15 +277,15 @@
                     </tr>
                     <tr>
                         <td>телефон</td>
-                        <td>+7-812-321-45-19</td>
+                        <td><a class="contact-link" href="tel:+79313282819">+79313282819</a></td>
                     </tr>
                     <tr>
                         <td>эл.почта</td>
-                        <td>info@repin-art.ru</td>
+                        <td><a class="contact-link" href="mailto:info@repin-art.ru">info@repin-art.ru</a></td>
                     </tr>
                     <tr>
                         <td>соц.сети</td>
-                        <td>vk.com/repin-art</td>
+                        <td><a class="contact-link" href="#" onClick="window.open('https://vk.com/club26228567', '_blank')">vk.com</a></td>
                     </tr>
 
                 </tbody>
@@ -326,15 +300,13 @@
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"><i
-                        class="fa-brands fa-artstation"></i></a>
                 <span class="mb-3 mb-md-0 text-muted">© 2022 Repin Art, Inc</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-vk fa-lg"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-solid fa-at fa-lg"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-solid fa-phone fa-md"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="#" onClick="window.open('https://vk.com/club26228567', '_blank')"><i class="fa-brands fa-vk fa-lg"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="mailto:info@repin-art.ru"><i class="fa-solid fa-at fa-lg"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="tel:+79313282819"><i class="fa-solid fa-phone fa-md"></i></a></li>
             </ul>
         </footer>
     </div>
