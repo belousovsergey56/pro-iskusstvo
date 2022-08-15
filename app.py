@@ -1,19 +1,18 @@
+from hashlib import sha1
+from operator import length_hint
 from flask import Flask, render_template, flash, redirect, url_for
 from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import configure_uploads, IMAGES, UploadSet
 from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegisterForm, TeacherRegisterForm, CourseRegisterForm, ScheludeRegisterForm
 
+from models import db, Teacher, Course, User, Schedule
+from config import app
+
 import os
 import sys
 import json
-
-# Подключение фреймворка, добавление в конфиг серетнвый ключ, адрес загрузки картинок
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-app.config['UPLOADED_IMAGES_DEST'] = 'static/images'
 
 # Имплементация экземпляра объекта UloadSet, добавление в конфигурацию приложение и экземляр класса, подключение bootstrap
 images = UploadSet('images', IMAGES)
@@ -21,50 +20,14 @@ configure_uploads(app, images)
 Bootstrap(app)
 
 # Добавление в конфиги приложения базы данных, имплементация объекта класса SQLAlchemy, подключение ORM
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///repinart.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
 
-# Создание моделей для базы данных: Пользователь,Преподаватель, Курс, Расписание занятий 
-class User(db.Model):
-   __tablename__ = "users"
-   id = db.Column(db.Integer, primary_key=True)
-   name = db.Column(db.String(1000))
-   email = db.Column(db.String(100), unique=True)
-   password = db.Column(db.String(1000))
-
-class Teacher(db.Model):
-   __tablename__ = "teachers"
-   id = db.Column(db.Integer, primary_key=True)
-   avatar = db.Column(db.String(1000))
-   name = db.Column(db.String(1000))
-   about = db.Column(db.String(100))
-
-class Course(db.Model):
-   __tablename__ = 'courses'
-   id = db.Column(db.Integer, primary_key=True)
-   name = db.Column(db.String(100))
-   avatar = db.Column(db.String(1000))
-   description = db.Column(db.String(1000))
-   price = db.Column(db.Integer)
-
-class Schedule(db.Model):
-   __tablename__ = 'scheludes'
-   id = db.Column(db.Integer, primary_key=True)
-   course = db.Column(db.String(100))
-   teacher = db.Column(db.String(100))
-   day = db.Column(db.String(100))
-   time = db.Column(db.String(10))
-
-
-db.create_all()
 
 @app.route('/')
 def home():
-     with open('static/data/services.json', 'r') as f:
-        data = json.load(f)
-        d = {'понедельник': {'11:15':'belousov'}, 'вторник': {'12:00': 'zuenko'}, 'среда': {'11:00': 'saul'}}
-        return render_template('index.html', price=data, d=d)
+   d = {'понедельник': {'11:15':'belousov'}, 'вторник': {'12:00': 'zuenko'}, 'среда': {'11:00': 'saul'}}
+   data = Course.query.all()
+   teachers = Teacher.query.all()
+   return render_template('index.html', price=data, teachers=teachers, d=d)
 
 @app.route('/admin')
 def sign():
@@ -216,17 +179,24 @@ def edit_course(course_id):
 
 @app.route('/add_schelude', methods=['GET', 'POST'])
 def add_schelude():
-   schelude = Schedule.query.all()
+   schelude = Schedule.query.order_by(Schedule.time.asc()).all()
+   all_time = [time.time for time in schelude]
+   all_days = [day.day for day in schelude]
+   cname = [course.name for course in Course.query.all()]
+   tname = [teacher.name for teacher in Teacher.query.all()]
 
    form = ScheludeRegisterForm()
+   form.course_name.choices = cname
+   form.teacher_name.choices = tname
+
    if form.validate_on_submit():
       new_schelude = Schedule(
          course=form.course_name.data,
          teacher=form.teacher_name.data,
-         day=form.day.data,
-         time=form.time.data
-      )
+         time=form.time.data,
+         day = form.day.data
+         )
       db.session.add(new_schelude)
       db.session.commit()
       return redirect(url_for('add_schelude'))
-   return render_template('schelude.html', form=form, schelude=schelude)
+   return render_template('schelude.html', form=form, schelude=schelude, all_time=all_time, all_days=all_days)
