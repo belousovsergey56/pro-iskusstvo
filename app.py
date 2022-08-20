@@ -1,26 +1,33 @@
-from hashlib import sha1
-from operator import length_hint
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_uploads import configure_uploads, IMAGES, UploadSet
-from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import RegisterForm, TeacherRegisterForm, CourseRegisterForm, ScheludeRegisterForm
-
+from forms import RegisterForm, TeacherRegisterForm, CourseRegisterForm, ScheludeRegisterForm, SigninForm
+from flask_login import login_user, login_required, current_user, logout_user
 from models import db, Teacher, Course, User, Schedule
-from config import app
+from config import app, login_manager
+from functools import wraps
+from flask import abort
 
 import os
 import sys
-import json
 
 # Имплементация экземпляра объекта UloadSet, добавление в конфигурацию приложение и экземляр класса, подключение bootstrap
 images = UploadSet('images', IMAGES)
 configure_uploads(app, images)
 Bootstrap(app)
 
-# Добавление в конфиги приложения базы данных, имплементация объекта класса SQLAlchemy, подключение ORM
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
+def admin_only(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if current_user.get_id() != str(1):
+            return render_template('403.html')
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/')
 def home():
@@ -29,15 +36,30 @@ def home():
    teachers = Teacher.query.all()
    return render_template('index.html', price=data, teachers=teachers, d=d)
 
-@app.route('/admin')
+@app.route('/admin', methods=['GET', 'POST'])
 def sign():
-   return render_template('signin.html')
+   form = SigninForm()
+   if form.validate_on_submit():
+      user = User.query.filter_by(email=form.email.data).first()
+      if not user:
+            flash(message="Не верный email, попробуйте снова или обратитесть к своему администратору")
+            return render_template('signin.html', form=form)
+      if check_password_hash(user.password, form.password.data):
+         login_user(user)
+         return redirect(url_for('menu'))
+      else:
+            flash(message="Не верный пароль, попробуйте снова")
+            return render_template("signin.html", form=form, logged_in=current_user.is_authenticated)
+   return render_template('signin.html', form=form)
 
 @app.route('/menu')
+@login_required
 def menu():
    return render_template('menu.html')
 
 @app.route('/adduser', methods=['GET', 'POST'])
+@admin_only
+@login_required
 def add_user():
    form = RegisterForm()
    users = User.query.all()
@@ -56,6 +78,8 @@ def add_user():
    return render_template('adduser.html', form=form, users=users)
 
 @app.route('/delete/<int:user_id>')
+@admin_only
+@login_required
 def delete_user(user_id):
    user_to_delete = User.query.get(user_id)
    db.session.delete(user_to_delete)
@@ -63,6 +87,8 @@ def delete_user(user_id):
    return redirect(url_for('add_user'))
 
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST" ])
+@admin_only
+@login_required
 def edit_user(user_id):
    users = User.query.all()
    user = User.query.get(user_id)
@@ -81,6 +107,7 @@ def edit_user(user_id):
    
 
 @app.route('/add_teacher', methods=['GET', 'POST'])
+@login_required
 def add_teacher():
    teacher = Teacher.query.order_by(Teacher.id.asc()).all()
    form = TeacherRegisterForm()
@@ -98,6 +125,8 @@ def add_teacher():
    return render_template('addteacher.html', form=form, teachers=teacher)
 
 @app.route('/delete_teacher/<int:teacher_id>')
+@admin_only
+@login_required
 def delete_teacher(teacher_id):
    teacher_to_delete = Teacher.query.get(teacher_id)
    if teacher_to_delete.avatar != '/static/images/default.jpeg':
@@ -107,6 +136,7 @@ def delete_teacher(teacher_id):
    return redirect(url_for('add_teacher'))
 
 @app.route('/edit_teacher/<int:teacher_id>', methods=['GET', 'POST'])
+@login_required
 def edit_teacher(teacher_id):
    all_teachers = Teacher.query.order_by(Teacher.id.asc()).all()
    teacher = Teacher.query.get(teacher_id)
@@ -128,6 +158,7 @@ def edit_teacher(teacher_id):
    return render_template('addteacher.html', form=form, teachers=all_teachers)
 
 @app.route('/add_course', methods=['GET', 'POST'])
+@login_required
 def add_course():
    courses = Course.query.order_by(Course.id.asc()).all()
    form = CourseRegisterForm()
@@ -146,6 +177,7 @@ def add_course():
    return render_template('addcourse.html', form=form, courses=courses)
 
 @app.route('/delete_course/<int:course_id>')
+@login_required
 def delete_course(course_id):
    course_to_delete = Course.query.get(course_id)
    if course_to_delete.avatar != '/static/images/default_course.jpeg':
@@ -155,6 +187,7 @@ def delete_course(course_id):
    return redirect(url_for('add_course'))
 
 @app.route('/edit_course/<int:course_id>', methods=['GET', 'POST'])
+@login_required
 def edit_course(course_id):
    courses = Course.query.all()
    edit_course = Course.query.get(course_id)
@@ -178,6 +211,7 @@ def edit_course(course_id):
    return render_template('addcourse.html', form=form, courses=courses)
 
 @app.route('/add_schelude', methods=['GET', 'POST'])
+@login_required
 def add_schelude():
    schelude = Schedule.query.order_by(Schedule.time.asc()).all()
    all_time = [time.time for time in schelude]
@@ -200,3 +234,8 @@ def add_schelude():
       db.session.commit()
       return redirect(url_for('add_schelude'))
    return render_template('schelude.html', form=form, schelude=schelude, all_time=all_time, all_days=all_days)
+
+@app.route('/logout')
+def logout():
+   logout_user()
+   return redirect(url_for('sign'))
