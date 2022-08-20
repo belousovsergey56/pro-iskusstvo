@@ -1,24 +1,30 @@
 body {
     text-align: center;
-/* fallback for old browsers */
-background: #6a85b6;
-
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(106, 133, 182, 0.5), rgba(186, 200, 224, 0.5));
-
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(106, 133, 182, 0.5), rgba(186, 200, 224, 0.5))     
+    background-color: #dcdcdc;
 }
 
-.navbar {
-/* fallback for old browsers */
-background: #6a85b6;
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(106, 133, 182, 1), rgba(186, 200, 224, 1));
+img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(106, 133, 182, 1), rgba(186, 200, 224, 1))
+img:hover {
+	-webkit-filter: none; /* Safari 6.0 - 9.0 */
+    filter: none;
+}
+
+.index-logo-text {
+    text-shadow: 3px 5px 6px red;
+    color: aliceblue;
+}
+
+.navbar-brand {
+    color:aliceblue ;
+}
+
+.nav-link {
+    color:aliceblue;
 }
 
 .about-bg{
@@ -27,6 +33,14 @@ background: linear-gradient(to right, rgba(106, 133, 182, 1), rgba(186, 200, 224
     background: url("/static/images/gallery/img4.jpeg");
     background-size: cover;
     text-shadow: 3px 5px 6px black;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+
+}
+
+.about-bg:hover {
+    -webkit-filter: none; /* Safari 6.0 - 9.0 */
+    filter: none;
 }
 
 
@@ -226,4 +240,34 @@ background: linear-gradient(to right, rgba(106, 133, 182, 1), rgba(186, 200, 224
 
 .contact-link:hover {
     color: #6a85b6;
+}
+
+.index_tavatar {
+    border-radius: 100%;
+}
+
+.left_column {
+    text-align: right;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.flash-message {
+    color: #a52a2a;
+  }
+
+.header-sigin{
+    margin-top: 15%;
+}
+
+.error-403 {
+    margin-top: 15%;
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
 }
