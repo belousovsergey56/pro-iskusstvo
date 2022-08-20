@@ -1,7 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, FileField, TextAreaField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, FileField, TextAreaField, SelectField, EmailField
 from wtforms.validators import DataRequired
 
+class SigninForm(FlaskForm):
+    email = EmailField(label='', render_kw={'placeholder': 'Электронная почта'} ,validators=[DataRequired()])
+    password = PasswordField(label='', render_kw={'placeholder': 'Пароль'} ,validators=[DataRequired()])
+    submit = SubmitField('Войти')
 
 class RegisterForm(FlaskForm):
     user_name = StringField(label='', render_kw={'placeholder': 'Имя пользователя'} ,validators=[DataRequired()])
