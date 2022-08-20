@@ -1,8 +1,9 @@
 from config import db
+from flask_login import UserMixin
 
 
 # Создание моделей для базы данных: Пользователь,Преподаватель, Курс, Расписание занятий 
-class User(db.Model):
+class User(UserMixin, db.Model):
    __tablename__ = "users"
    id = db.Column(db.Integer, primary_key=True)
    name = db.Column(db.String(1000))
