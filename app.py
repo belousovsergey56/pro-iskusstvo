@@ -16,6 +16,8 @@ images = UploadSet('images', IMAGES)
 configure_uploads(app, images)
 Bootstrap(app)
 
+all_days = ('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье')
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -30,10 +32,10 @@ def admin_only(f):
 
 @app.route('/')
 def home():
-   d = {'понедельник': {'11:15':'belousov'}, 'вторник': {'12:00': 'zuenko'}, 'среда': {'11:00': 'saul'}}
    data = Course.query.all()
    teachers = Teacher.query.all()
-   return render_template('index.html', price=data, teachers=teachers, d=d)
+   schl = data_for_rsp()  
+   return render_template('index.html', price=data, teachers=teachers, all_days=all_days, schelude=schl)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def sign():
@@ -213,25 +215,13 @@ def edit_course(course_id):
 @login_required
 def add_schelude():
    schelude = Schelude.query.order_by(Schelude.start_time.asc()).all()
-   all_time = sorted({time.start_time for time in schelude})
-   all_days = ('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье')
    
-
    cname = [course.name for course in Course.query.all()]
    tname = [teacher.name for teacher in Teacher.query.all()]
    form = ScheludeRegisterForm()
    form.course_name.choices = cname
    form.teacher_name.choices = tname
-   schl = {}
-   
-
-   for time in all_time:
-      for data in schelude:
-         if data.start_time == time:
-            if data.start_time in schl:
-               schl[time].update({data.day: [data.course, f'{data.start_time} - {data.end_time}']})
-            else:
-               schl[time] = {data.day: [data.course, f'{data.start_time} - {data.end_time}']}
+   schl = data_for_rsp()
 
    if form.validate_on_submit():
       new_schelude = Schelude(
@@ -244,7 +234,7 @@ def add_schelude():
       db.session.add(new_schelude)
       db.session.commit()
       return redirect(url_for('add_schelude'))
-   return render_template('schelude.html', form=form, schelude=schl, all_time=all_time, all_days=all_days, rsp=schelude)
+   return render_template('schelude.html', form=form, schelude=schl, all_days=all_days, rsp=schelude)
 
 @app.route('/delete_schelude/<int:schelude_id>')
 @login_required
@@ -253,6 +243,50 @@ def remove_schelude(schelude_id):
    db.session.delete(schelude)
    db.session.commit()
    return redirect(url_for('add_schelude'))
+
+@app.route('/edit_schelude/<int:schelude_id>', methods=['GET', 'POST'])
+@login_required
+def edit_schelude(schelude_id):
+   schelude = Schelude.query.order_by(Schelude.start_time.asc()).all()
+   edit_schelude = Schelude.query.get(schelude_id)
+
+   cname = [course.name for course in Course.query.all()]
+   tname = [teacher.name for teacher in Teacher.query.all()]
+   form = ScheludeRegisterForm(
+      day=edit_schelude.day,
+      time=edit_schelude.start_time,
+      end_time=edit_schelude.end_time,
+      course_name=edit_schelude.course,
+      teacher_name=edit_schelude.teacher
+   )
+
+   form.course_name.choices = cname
+   form.teacher_name.choices = tname
+   schl = data_for_rsp()
+
+   if form.validate_on_submit():
+      edit_schelude.day = form.day.data
+      edit_schelude.start_time = form.time.data
+      edit_schelude.end_time = form.end_time.data
+      edit_schelude.course = form.course_name.data
+      edit_schelude.teacher = form.teacher_name.data
+      db.session.commit()
+      return redirect(url_for('add_schelude'))
+   return render_template('schelude.html', form=form, schelude=schl, all_days=all_days, rsp=schelude)
+
+def data_for_rsp():
+   schelude = Schelude.query.order_by(Schelude.start_time.asc()).all()
+   all_time = sorted({time.start_time for time in schelude})
+   schl = {}
+
+   for time in all_time:
+      for data in schelude:
+         if data.start_time == time:
+            if data.start_time in schl:
+               schl[time].update({data.day: [data.course, f'{data.start_time} - {data.end_time}']})
+            else:
+               schl[time] = {data.day: [data.course, f'{data.start_time} - {data.end_time}']}
+   return schl
 
 @app.route('/logout')
 def logout():
