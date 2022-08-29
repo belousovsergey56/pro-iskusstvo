@@ -28,7 +28,8 @@ class CourseRegisterForm(FlaskForm):
 
 class ScheludeRegisterForm(FlaskForm):
     day = SelectField(label='', render_kw={'placeholder': 'Выбрать день проведения курса'}, choices=['Понедельник', 'Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'])
-    time = StringField('', render_kw={'placeholder': 'Дата начала занятий (формат: 11:00, 21:15, 13:45)'})
+    time = StringField('', render_kw={'placeholder': 'Время начала занятий (формат: 11:00, 21:15, 13:45)'})
+    end_time = StringField('', render_kw={'placeholder': 'Время окончания занятий (формат: 11:00, 21:15, 13:45)'})
     course_name = SelectField(label='Название курса')
     teacher_name = SelectField(label='Выбрать преподавателя')
     add_schelude = SubmitField('Добавить курс в расписание')
