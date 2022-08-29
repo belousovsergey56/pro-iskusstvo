@@ -15,7 +15,7 @@ img:hover {
 }
 
 .index-logo-text {
-    text-shadow: 3px 5px 6px red;
+    /* text-shadow: 3px 5px 6px red; */
     color: aliceblue;
 }
 
@@ -79,13 +79,16 @@ img:hover {
 }
 
 .image-price {
-    height: 40rem;
+    /* height: 40rem; */
+    /* height: 50%; */
+    /* width: 100%;
+    height: auto; */
+    max-width: 60%;
+    min-width: 60%;
+    height: auto;
 }
 
-.cimg {
-    height: 25rem;
-    /* border-radius: 100%; */
-}
+
 
 .carousel-item {
     padding: 5%;
@@ -94,11 +97,19 @@ img:hover {
 .carousel-control-prev-icon {
     background-image: url('/static/images/left-arrow.png');
     /* background-color: black; */
+    
+}
+
+.carousel-control-prev {
+    padding-right: 11%;
 }
 
 .carousel-control-next-icon {
     background-image: url('/static/images/right-arrow.png');
     }
+.carousel-control-next {
+    padding-left: 11%;
+}
 
 .menu {
     text-align: left;
@@ -270,4 +281,10 @@ img:hover {
     width: 100%;
     max-width: 330px;
     padding: 15px;
+}
+
+
+#edit_schelude {
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
