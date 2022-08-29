@@ -4,10 +4,9 @@ from flask_uploads import configure_uploads, IMAGES, UploadSet
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegisterForm, TeacherRegisterForm, CourseRegisterForm, ScheludeRegisterForm, SigninForm
 from flask_login import login_user, login_required, current_user, logout_user
-from models import db, Teacher, Course, User, Schedule
+from models import db, Teacher, Course, User, Schelude
 from config import app, login_manager
 from functools import wraps
-from flask import abort
 
 import os
 import sys
@@ -213,27 +212,47 @@ def edit_course(course_id):
 @app.route('/add_schelude', methods=['GET', 'POST'])
 @login_required
 def add_schelude():
-   schelude = Schedule.query.order_by(Schedule.time.asc()).all()
-   all_time = [time.time for time in schelude]
-   all_days = [day.day for day in schelude]
+   schelude = Schelude.query.order_by(Schelude.start_time.asc()).all()
+   all_time = sorted({time.start_time for time in schelude})
+   all_days = ('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье')
+   
+
    cname = [course.name for course in Course.query.all()]
    tname = [teacher.name for teacher in Teacher.query.all()]
-
    form = ScheludeRegisterForm()
    form.course_name.choices = cname
    form.teacher_name.choices = tname
+   schl = {}
+   
+
+   for time in all_time:
+      for data in schelude:
+         if data.start_time == time:
+            if data.start_time in schl:
+               schl[time].update({data.day: [data.course, f'{data.start_time} - {data.end_time}']})
+            else:
+               schl[time] = {data.day: [data.course, f'{data.start_time} - {data.end_time}']}
 
    if form.validate_on_submit():
-      new_schelude = Schedule(
-         course=form.course_name.data,
+      new_schelude = Schelude(
          teacher=form.teacher_name.data,
-         time=form.time.data,
-         day = form.day.data
+         start_time=form.time.data,
+         day = form.day.data,
+         course = form.course_name.data,
+         end_time = form.end_time.data
          )
       db.session.add(new_schelude)
       db.session.commit()
       return redirect(url_for('add_schelude'))
-   return render_template('schelude.html', form=form, schelude=schelude, all_time=all_time, all_days=all_days)
+   return render_template('schelude.html', form=form, schelude=schl, all_time=all_time, all_days=all_days, rsp=schelude)
+
+@app.route('/delete_schelude/<int:schelude_id>')
+@login_required
+def remove_schelude(schelude_id):
+   schelude = Schelude.query.get(schelude_id)
+   db.session.delete(schelude)
+   db.session.commit()
+   return redirect(url_for('add_schelude'))
 
 @app.route('/logout')
 def logout():
