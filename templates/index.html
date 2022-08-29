@@ -97,7 +97,7 @@
         <div class="container price">
             <h1 class="header-section-text">Услуги</h1>
 
-            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="15000">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
 
@@ -142,7 +142,7 @@
         <div class="container teachers">
             <h1 class="header-section-text">Преподаватели</h1>
 
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="15000">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="image-price index_tavatar" src="{{ teachers[0].avatar }}" alt="">
@@ -179,171 +179,65 @@
 
             <h1 class="header-section-text">Расписание занятий</h1>
 
-            <div class="table-responsive">
+            <div class="table-responsive-xxl">
 
-                <table class="table table-striped table-bordered index_schelude_table">
+                <table class="table table-bordered text-center table-striped">
                     <thead>
-                        <tr>
-                            <th scope="col">Время</th>
-                            <th scope="col">Понедельник</th>
-                            <th scope="col">Вторник</th>
-                            <th scope="col">Среда</th>
-                            <th scope="col">Четверг</th>
-                            <th scope="col">Пятница</th>
-                            <th scope="col">Суббота</th>
-                            <th scope="col">Воскресенье</th>
+                        <tr class="bg-light-gray">
+                            <th scope="col" class="text-uppercase ">Время</th>
+                            {% for day in all_days: %}
+                            <th scope="col" class="text-uppercase">{{ day }}</th>
+                            {% endfor %}
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for k, v in d.items(): %}
-                        {% for time, name in v.items(): %}
+                    <tbody class="table-group-divider">
                         <tr>
+                            {% for time, db in schelude.items(): %}
                             <th scope="row">{{ time }}</th>
-                            {% if k == 'понедельник': %}
-                            <td>
-                                {{name}}
+                            <td class="{{ all_days[0] }}">
+                                {{ db.get(all_days[0])[0] if db.get(all_days[0]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[0])[1] if db.get(all_days[0]) else '' }}
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            {% elif k == 'вторник': %}
-                            <td>
-    
-                            </td>
-                            <td> {{name}}
+                            <td class="{{ all_days[1] }}">
+                                {{ db.get(all_days[1])[0] if db.get(all_days[1]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[1])[1] if db.get(all_days[1]) else '' }}
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            {% elif k == 'среда': %}
-                            <td>
-    
-                            </td>
-                            <td></td>
-                            <td>
-                                {{name}}
+                            <td class="{{ all_days[2] }}">
+                                {{ db.get(all_days[2])[0] if db.get(all_days[2]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[2])[1] if db.get(all_days[2]) else '' }}
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            {% elif k == 'четверг': %}
-                            <td>
-    
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                {{name}}
+                            <td class="{{ all_days[3] }}">
+                                {{ db.get(all_days[3])[0] if db.get(all_days[3]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[3])[1] if db.get(all_days[3]) else '' }}
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            {% elif k == 'пятница': %}
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                {{name}}
+                            <td class="{{ all_days[4] }}">
+                                {{ db.get(all_days[4])[0] if db.get(all_days[4]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[4])[1] if db.get(all_days[4]) else '' }}
                             </td>
-                            <td></td>
-                            <td></td>
-                            {% elif k == 'суббота': %}
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                {{name}}
+                            <td class="{{ all_days[5] }}">
+                                {{ db.get(all_days[5])[0] if db.get(all_days[5]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[5])[1] if db.get(all_days[5]) else '' }}
                             </td>
-                            <td></td>
-                            {% elif k == 'воскресенье': %}
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                {{name}}
+                            <td class="{{ all_days[6] }}">
+                                {{ db.get(all_days[6])[0] if db.get(all_days[6]) else '' }}
                                 <br>
-                                zanyatie
+                                {{ db.get(all_days[6])[1] if db.get(all_days[6]) else '' }}
                             </td>
-    
-                            {% endif %}
                         </tr>
                         {% endfor %}
-                        {% endfor %}
-    
+        
                     </tbody>
                 </table>
             </div>
-    </section>
-
-    <section id="contact">
-        <div class="container contacts">
-            <h1 class="header-section-text">Контакты</h1>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td class="text-center">
-                            <h3>Адрес</h3>
-                        </td>
-                        <td class="text-center">
-                            <h3>6-я линия В.О., 61</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <h3>Телефон</h3>
-                        </td>
-                        <td class="text-center">
-                            <h3><a class="contact-link" href="tel:+79313282819">+79313282819</a< /h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <h3>Эл.почта</h3>
-                        </td>
-                        <td class="text-center">
-                            <h3><a class="contact-link" href="mailto:info@repin-art.ru">info@repin-art.ru</a></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <h3>ВКонтакте</h3>
-                        </td>
-                        <td class="text-center">
-                            <h3><a class="contact-link" href="#"
-                                    onClick="window.open('https://vk.com/club26228567', '_blank')">vk.com</a></h3>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
             <div class="map">
                 <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A045dec13636b656c41fe9b1649ed3e5cb34158ed86603f67cc0527312636ac5f&amp;width=100%25&amp;height=720&amp;lang=ru_RU&amp;scroll=true"></script>
             </div>
-        </div>
     </section>
 
 
