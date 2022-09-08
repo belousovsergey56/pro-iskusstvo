@@ -3,9 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.75, user-scalable=no"/> -->
-
-    <meta name="viewport" content="width=device-width, initial-scale=0.75, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -18,14 +16,20 @@
     <!-- right arrow <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by Roundicons - Flaticon</a> -->
     <!-- left arrow <a href="https://www.flaticon.com/free-icons/back" title="back icons">Back icons created by Roundicons - Flaticon</a> -->
 
-    <title>Pro Искусство - Арт Центр</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&family=Roboto&display=swap" rel="stylesheet">
+
+    <title>Арт Центр | Pro Искусство</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
             <div class="container">
-                <a class="navbar-brand index-logo-text" href="#">Pro Искусство - Арт Центр</a>
+                <a class="navbar-brand index-logo-text" href="#" style="font-family: 'Raleway', sans-serif;">АРТ-ЦЕНТР | PRO ИСКУССТВО</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,9 +51,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Контакты</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('sign') }}">Enter</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -58,35 +62,42 @@
 
     <section id="about">
         <div class="container about-bg">
-            <div class="txt">
+            <div class="about-txt">
 
-                <h1>Pro Искусство - Арт Центр</h1>
+                <h1 class="about-header-1">
+                    АРТ-ЦЕНТР
+                </h1>
+                <h1 class="about-header-2" style="color: #be2121;">PRO ИСКУССТВО</h1>
+                <h4 class="about-lozung" style="padding-bottom: 5%;">
+                    ПРОСТРАНСТВО ТВОРЧЕСТВА И ПРОФЕССИОНАЛЬНОГО ИСКУССТВА
+                </h4>
+                <br>
                 <ul>
-                    <h5>
+                    <h4>
                         <dt>Опытные педагоги.</dt>
-                        <dl>Все наши преподаватели настоящие профессионалы своего дела, активно занимающиеся выставочной и творческой деятельностью. Имеют высшее  художественное и педагогическое образование и опыт работы.</dl>
-                    </h5>
+                        <dl class="about-text">Все наши преподаватели настоящие профессионалы своего дела, активно занимающиеся выставочной и творческой деятельностью. Имеют высшее  художественное и педагогическое образование и опыт работы.</dl>
+                    </h4>
                 </ul>
                 <ul>
-                    <h5>
+                    <h4>
                         <dt>Определённая методика обучения.</dt>
-                        <dl>Все наши преподаватели настоящие профессионалы своего дела, активно занимающиеся выставочной и творческой деятельностью. Имеют высшее  художественное и педагогическое образование и опыт работы.</dl>
-                    </h5>
+                        <dl class="about-text">Все наши преподаватели настоящие профессионалы своего дела, активно занимающиеся выставочной и творческой деятельностью. Имеют высшее  художественное и педагогическое образование и опыт работы.</dl>
+                    </h4>
                 </ul>
                 <ul>
-                    <h5>
+                    <h4>
                         <dt>Комфортные условия.</dt>
-                        <dl>Большое пространство в котором 
+                        <dl class="about-text">Большое пространство в котором 
                             несколько просторных и светлых помещений. 
                             А также несколько более камерных комнат позволяют удобно разместиться, как и коллективно так и индивидуально.</dl>
-                    </h5>
+                    </h4>
                 </ul>
                 <ul>
-                    <h5>
+                    <h4>
                         <dt>Удобное расположение. </dt>
-                        <dl>Студия находится в центре города в пешей доступности от метро Василиостровская (4 минуты) .
+                        <dl class="about-text">Студия находится в центре города в пешей доступности от метро Василиостровская (4 минуты) .
                             6 линия В.О. дом 61.  Работаем как в будние так и в выходные дни.</dl>
-                    </h5>
+                    </h4>
                 </ul>
                 </div>
         </div>
@@ -104,23 +115,26 @@
                         <img class="image-price" src="{{ price[0].avatar }}" alt="">
                         <h4 class="card-title">{{ price[0].name }}</h4>
                         <br>
-                        <h5>{{ price[0].description }}</h5>
+                        <h5 class="services-text">{{ price[0].description }}</h5>
                         <br>
-                        <h4>{{ price[0].price }} руб.</h4>
-
+                        <h4>{{ price[0].price }} руб. / час</h4>
+                        <a class="btn btn-warning" href="tel:1555" role="button">Каждое шестое занятие бесплатно</a>
+                        <!-- <h4>Каждое шестое занятие бесплатно</h4> -->
                     </div>
+                    
 
                     {% for services in price[1:]: %}
                     <div class="carousel-item">
                         <img class="image-price" src="{{ services.avatar }}" alt="">
                         <h4>{{ services.name }}</h4>
                         <br>
-                        <h5>{{ services.description }}</h5>
+                        <h5 class="services-text">{{ services.description }}</h5>
                         <br>
-                        <h4>{{ services.price }} руб.</h4>
+                        <h4>{{ services.price }} руб. / час</h4>
+                        <a class="btn btn-warning" href="tel:1555" role="button">Каждое шестое занятие бесплатно</a>
                     </div>
                     {% endfor %}
-
+                    
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1"
                     data-bs-slide="prev">
@@ -135,6 +149,9 @@
             </div>
         </div>
 
+        <!-- <div>
+            <h4>Каждое шестое занятие бесплатно</h4>
+        </div> -->
 
     </section>
 
@@ -147,7 +164,8 @@
                     <div class="carousel-item active">
                         <img class="image-price index_tavatar" src="{{ teachers[0].avatar }}" alt="">
                         <h4 class="card-title">{{ teachers[0].name }}</h4>
-                        <h5>{{ teachers[0].about }}</h5>
+                        <p></p>
+                        <h5 class="teacher-text">{{ teachers[0].about|safe}}</h5>
 
                     </div>
 
@@ -155,7 +173,8 @@
                     <div class="carousel-item">
                         <img class="image-price index_tavatar" src="{{ services.avatar }}" alt="">
                         <h4>{{ services.name }}</h4>
-                        <h5>{{ services.about }}</h5>
+                        <p></p>
+                        <h5 class="teacher-text">{{ services.about|safe }}</h5>
                     </div>
                     {% endfor %}
 
@@ -167,7 +186,7 @@
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="next">
-                    <span class="carousel-control-next-icon dark" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
@@ -184,47 +203,47 @@
                 <table class="table table-bordered text-center table-striped">
                     <thead>
                         <tr class="bg-light-gray">
-                            <th scope="col" class="text-uppercase ">Время</th>
+                            <th scope="col" class="text-uppercase " style="color:aliceblue;">Время</th>
                             {% for day in all_days: %}
-                            <th scope="col" class="text-uppercase">{{ day }}</th>
+                            <th scope="col" class="text-uppercase" style="color:aliceblue;">{{ day }}</th>
                             {% endfor %}
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
                         <tr>
                             {% for time, db in schelude.items(): %}
-                            <th scope="row">{{ time }}</th>
-                            <td class="{{ all_days[0] }}">
+                            <th scope="row" style="color:aliceblue;">{{ time }}</th>
+                            <td class="{{ all_days[0] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[0])[0] if db.get(all_days[0]) else '' }}
                                 <br>
                                 {{ db.get(all_days[0])[1] if db.get(all_days[0]) else '' }}
                             </td>
-                            <td class="{{ all_days[1] }}">
+                            <td class="{{ all_days[1] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[1])[0] if db.get(all_days[1]) else '' }}
                                 <br>
                                 {{ db.get(all_days[1])[1] if db.get(all_days[1]) else '' }}
                             </td>
-                            <td class="{{ all_days[2] }}">
+                            <td class="{{ all_days[2] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[2])[0] if db.get(all_days[2]) else '' }}
                                 <br>
                                 {{ db.get(all_days[2])[1] if db.get(all_days[2]) else '' }}
                             </td>
-                            <td class="{{ all_days[3] }}">
+                            <td class="{{ all_days[3] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[3])[0] if db.get(all_days[3]) else '' }}
                                 <br>
                                 {{ db.get(all_days[3])[1] if db.get(all_days[3]) else '' }}
                             </td>
-                            <td class="{{ all_days[4] }}">
+                            <td class="{{ all_days[4] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[4])[0] if db.get(all_days[4]) else '' }}
                                 <br>
                                 {{ db.get(all_days[4])[1] if db.get(all_days[4]) else '' }}
                             </td>
-                            <td class="{{ all_days[5] }}">
+                            <td class="{{ all_days[5] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[5])[0] if db.get(all_days[5]) else '' }}
                                 <br>
                                 {{ db.get(all_days[5])[1] if db.get(all_days[5]) else '' }}
                             </td>
-                            <td class="{{ all_days[6] }}">
+                            <td class="{{ all_days[6] }}" style="color:aliceblue;">
                                 {{ db.get(all_days[6])[0] if db.get(all_days[6]) else '' }}
                                 <br>
                                 {{ db.get(all_days[6])[1] if db.get(all_days[6]) else '' }}
@@ -235,23 +254,65 @@
                     </tbody>
                 </table>
             </div>
+
+            <section id="contact">
+                <div class="container">
+                    <h1 class="header-section-text">Контакты</h1>
+
+                    <div class="row row-text">
+                        <div class="col border-end name-message border-dark">
+                            <h4 class="row-text">Телефон студии</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="text-message col-text"><a href="tel:+79313282819" class="contact-link" style="color:aliceblue;">+79313282819</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col border-end name-message border-dark">
+                            <h4 class="row-text">Адрес</h4>
+                        </div>
+                        <div class="col text-message">
+                            <h4 class="col-text">6 линия В.О. дом 61</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col border-end name-message border-dark">
+                            <h4 class="row-text">Email</h4>
+                        </div>
+                        <div class="col text-message"">
+                            <h4 class="col-text"><a href="mailto:info@proiskusstvo.ru"  class="contact-link" style="color:aliceblue;">info@proiskusstvo.ru</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col border-end name-message border-dark">
+                            <h4 class="row-text">Вконтакте</h4>
+                        </div>
+                        <div class="col text-message">
+                            <h4 class="col-text"><a href="https://vk.com/publicproiskusstvo" target="_blank"  class="contact-link" style="color:aliceblue;">vk.com/publicproiskusstvo</a></h4>
+                        </div>
+                    </div>
+            </section>
+
             <div class="map">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A045dec13636b656c41fe9b1649ed3e5cb34158ed86603f67cc0527312636ac5f&amp;width=100%25&amp;height=720&amp;lang=ru_RU&amp;scroll=true"></script>
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A045dec13636b656c41fe9b1649ed3e5cb34158ed86603f67cc0527312636ac5f&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true"></script>
             </div>
     </section>
+
 
 
     <footer class="footer mt-auto py-3 bg-dark">
         <div class="container  d-flex flex-wrap justify-content-between align-items-center">
             <div class="col-md-4 d-flex align-items-center">
-                <span class="mb-3 mb-md-0 text-muted">© 2022 Pro Искусство, Inc</span>
+                <span class="mb-3 mb-md-0 text-muted">PRO ИСКУССТВО © 2022</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="#"
-                        onClick="window.open('https://vk.com/club26228567', '_blank')"><i
+                <li class="ms-3"><a class="text-muted" href="https://vk.com/publicproiskusstvo" target="_blank"><i
                             class="fa-brands fa-vk fa-lg"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="mailto:info@repin-art.ru"><i
+                <li class="ms-3"><a class="text-muted" href="mailto:info@proiskusstvo.ru"><i
                             class="fa-solid fa-at fa-lg"></i></a></li>
                 <li class="ms-3"><a class="text-muted" href="tel:+79313282819"><i
                             class="fa-solid fa-phone fa-md"></i></a></li>
