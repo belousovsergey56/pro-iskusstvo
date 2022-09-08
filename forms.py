@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, FileField, TextAreaField, SelectField, EmailField
 from wtforms.validators import DataRequired
+from flask_ckeditor import CKEditorField
 
 class SigninForm(FlaskForm):
     email = EmailField(label='', render_kw={'placeholder': 'Электронная почта'} ,validators=[DataRequired()])
@@ -15,7 +16,7 @@ class RegisterForm(FlaskForm):
 
 class TeacherRegisterForm(FlaskForm):
     name = StringField(label='', render_kw={'placeholder': 'Имя преподавателя'} ,validators=[DataRequired()])
-    description = TextAreaField(label='', render_kw={'placeholder': 'О преподавателе'} ,validators=[DataRequired()])
+    description = CKEditorField(label='', render_kw={'placeholder': 'О преподавателе'} ,validators=[DataRequired()])
     path_photo = FileField(label='Загрузить фото')
     submit = SubmitField('Добавить преподавателя')
 
