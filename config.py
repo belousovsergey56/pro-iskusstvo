@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_ckeditor import CKEditor
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
@@ -21,6 +22,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
+ckeditor = CKEditor(app)
 
 db = SQLAlchemy(app)
