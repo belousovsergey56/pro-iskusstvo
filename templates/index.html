@@ -20,7 +20,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&family=Roboto&display=swap"
+        rel="stylesheet">
 
     <title>Арт Центр | Pro Искусство</title>
 </head>
@@ -29,7 +30,8 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
             <div class="container">
-                <a class="navbar-brand index-logo-text" href="#" style="font-family: 'Raleway', sans-serif;">АРТ-ЦЕНТР | PRO ИСКУССТВО</a>
+                <a class="navbar-brand index-logo-text" href="#" style="font-family: 'Raleway', sans-serif;">АРТ-ЦЕНТР |
+                    PRO ИСКУССТВО</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -72,34 +74,31 @@
                     ПРОСТРАНСТВО ТВОРЧЕСТВА И ПРОФЕССИОНАЛЬНОГО ИСКУССТВА
                 </h4>
                 <br>
-                <ul>
-                    <h4>
-                        <dt>Опытные педагоги.</dt>
-                        <dl class="about-text">Все наши преподаватели настоящие профессионалы своего дела, активно занимающиеся выставочной и творческой деятельностью. Имеют высшее  художественное и педагогическое образование и опыт работы.</dl>
-                    </h4>
-                </ul>
-                <ul>
-                    <h4>
-                        <dt>Определённая методика обучения.</dt>
-                        <dl class="about-text">Все наши преподаватели настоящие профессионалы своего дела, активно занимающиеся выставочной и творческой деятельностью. Имеют высшее  художественное и педагогическое образование и опыт работы.</dl>
-                    </h4>
-                </ul>
-                <ul>
-                    <h4>
-                        <dt>Комфортные условия.</dt>
-                        <dl class="about-text">Большое пространство в котором 
-                            несколько просторных и светлых помещений. 
-                            А также несколько более камерных комнат позволяют удобно разместиться, как и коллективно так и индивидуально.</dl>
-                    </h4>
-                </ul>
-                <ul>
-                    <h4>
-                        <dt>Удобное расположение. </dt>
-                        <dl class="about-text">Студия находится в центре города в пешей доступности от метро Василиостровская (4 минуты) .
-                            6 линия В.О. дом 61.  Работаем как в будние так и в выходные дни.</dl>
-                    </h4>
-                </ul>
+                <div class="about-body">
+                    <h4 class="about-body-header">Опытные педагоги.</h4>
+                    <h6 class="about-text">Все наши преподаватели настоящие профессионалы своего дела,
+                        активно занимающиеся выставочной и творческой деятельностью.
+                        Имеют высшее художественное и педагогическое образование и опыт работы.
+                    </h6>
+                    <br>
+                    <h4 class="about-body-header">Определённая методика обучения.</h4>
+                    <h6 class="about-text">Все наши преподаватели настоящие профессионалы своего дела,
+                        активно занимающиеся выставочной и творческой деятельностью.
+                        Имеют высшее художественное и педагогическое образование и опыт работы.</h6>
+                    <br>
+                    <h4 class="about-body-header">Комфортные условия.</h4>
+                    <h6 class="about-text">Большое пространство в котором
+                        несколько просторных и светлых помещений.
+                        А также несколько более камерных комнат позволяют удобно разместиться, как и коллективно так и
+                        индивидуально.</h6>
+                    <br>
+                    <h4 class="about-body-header">Удобное расположение.</h4>
+                    <h6 class="about-text">Студия находится в центре города в пешей доступности от метро
+                        Василиостровская (4 минуты) .
+                        6 линия В.О. дом 61. Работаем как в будние так и в выходные дни.</h6>
+                    <br>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -117,11 +116,11 @@
                         <br>
                         <h5 class="services-text">{{ price[0].description }}</h5>
                         <br>
-                        <h4>{{ price[0].price }} руб. / час</h4>
-                        <a class="btn btn-warning" href="tel:1555" role="button">Каждое шестое занятие бесплатно</a>
-                        <!-- <h4>Каждое шестое занятие бесплатно</h4> -->
+                        <h4>{{ price[0].price }}</h4>
+                        <a class="btn btn-warning" href="tel:{{ telephone }}" role="button">Каждое шестое занятие
+                            бесплатно</a>
                     </div>
-                    
+
 
                     {% for services in price[1:]: %}
                     <div class="carousel-item">
@@ -130,11 +129,12 @@
                         <br>
                         <h5 class="services-text">{{ services.description }}</h5>
                         <br>
-                        <h4>{{ services.price }} руб. / час</h4>
-                        <a class="btn btn-warning" href="tel:1555" role="button">Каждое шестое занятие бесплатно</a>
+                        <h4>{{ services.price }}</h4>
+                        <a class="btn btn-warning" href="tel:{{ telephone }}" role="button">Каждое шестое занятие
+                            бесплатно</a>
                     </div>
                     {% endfor %}
-                    
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1"
                     data-bs-slide="prev">
@@ -143,15 +143,11 @@
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1"
                     data-bs-slide="next">
-                    <span class="carousel-control-next-icon dark" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
-
-        <!-- <div>
-            <h4>Каждое шестое занятие бесплатно</h4>
-        </div> -->
 
     </section>
 
@@ -250,7 +246,7 @@
                             </td>
                         </tr>
                         {% endfor %}
-        
+
                     </tbody>
                 </table>
             </div>
@@ -264,7 +260,8 @@
                             <h4 class="row-text">Телефон студии</h4>
                         </div>
                         <div class="col">
-                            <h4 class="text-message col-text"><a href="tel:+79313282819" class="contact-link" style="color:aliceblue;">+79313282819</a></h4>
+                            <h4 class="text-message col-text"><a href="tel:{{ telephone }}" class="contact-link"
+                                    style="color:aliceblue;">{{ telephone }}</a></h4>
                         </div>
                     </div>
 
@@ -273,7 +270,7 @@
                             <h4 class="row-text">Адрес</h4>
                         </div>
                         <div class="col text-message">
-                            <h4 class="col-text">6 линия В.О. дом 61</h4>
+                            <h4 class="col-text">{{ address }}</h4>
                         </div>
                     </div>
 
@@ -282,7 +279,8 @@
                             <h4 class="row-text">Email</h4>
                         </div>
                         <div class="col text-message"">
-                            <h4 class="col-text"><a href="mailto:info@proiskusstvo.ru"  class="contact-link" style="color:aliceblue;">info@proiskusstvo.ru</a></h4>
+                            <h4 class=" col-text"><a href="mailto:{{ email }}" class="contact-link"
+                                style="color:aliceblue;">{{ email }}</a></h4>
                         </div>
                     </div>
 
@@ -291,13 +289,15 @@
                             <h4 class="row-text">Вконтакте</h4>
                         </div>
                         <div class="col text-message">
-                            <h4 class="col-text"><a href="https://vk.com/publicproiskusstvo" target="_blank"  class="contact-link" style="color:aliceblue;">vk.com/publicproiskusstvo</a></h4>
+                            <h4 class="col-text"><a href="{{ vk }}" target="_blank" class="contact-link"
+                                    style="color:aliceblue;">vk.com/publicproiskusstvo</a></h4>
                         </div>
                     </div>
             </section>
 
             <div class="map">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A045dec13636b656c41fe9b1649ed3e5cb34158ed86603f67cc0527312636ac5f&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true"></script>
+                <script type="text/javascript" charset="utf-8" async
+                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A045dec13636b656c41fe9b1649ed3e5cb34158ed86603f67cc0527312636ac5f&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true"></script>
             </div>
     </section>
 
@@ -310,11 +310,11 @@
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="https://vk.com/publicproiskusstvo" target="_blank"><i
+                <li class="ms-3"><a class="text-muted" href="{{ vk }}" target="_blank"><i
                             class="fa-brands fa-vk fa-lg"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="mailto:info@proiskusstvo.ru"><i
+                <li class="ms-3"><a class="text-muted" href="mailto:{{ email }}"><i
                             class="fa-solid fa-at fa-lg"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="tel:+79313282819"><i
+                <li class="ms-3"><a class="text-muted" href="tel:{{ telephone }}"><i
                             class="fa-solid fa-phone fa-md"></i></a></li>
             </ul>
         </div>
@@ -324,4 +324,5 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
