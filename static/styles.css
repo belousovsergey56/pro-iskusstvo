@@ -1,6 +1,5 @@
 body {
     text-align: center;
-    color: aliceblue;
     font-family: 'Raleway', sans-serif;
     background-image: linear-gradient(rgba(51, 45, 45, 0.9), rgba(51, 45, 45, 0.6)), url("/static/images/gallery/img-bg-3.jpg");
     background-repeat: no-repeat;
@@ -12,25 +11,26 @@ body {
     background-attachment: fixed;
 }
 
-h1,h2,h3,h4,h5,h6,table {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table {
     text-shadow: 3px 5px 6px black;
 }
 
 
-.index-logo-text {
+.index-logo-text, 
+.navbar-brand, 
+.nav-link, 
+.text-message, 
+.admin-footer, 
+.about-txt,
+body  {
     color: aliceblue;
-}
-
-.navbar-brand {
-    color: aliceblue;
-}
-
-.nav-link {
-    color: aliceblue;
-}
-
-.about-bg {
-    text-shadow: 3px 5px 6px black;
 }
 
 .about-header-1 {
@@ -84,7 +84,6 @@ h1,h2,h3,h4,h5,h6,table {
 .text-message {
     text-align: left;
     font-family: 'Roboto', sans-serif;
-    color: aliceblue;
 }
 
 .map {
@@ -93,8 +92,6 @@ h1,h2,h3,h4,h5,h6,table {
 }
 
 .about-txt {
-    /* background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent); */
-    color: white;
     padding-left: 7%;
     padding-right: 7%;
     padding-top: 9%;
@@ -112,8 +109,6 @@ h1,h2,h3,h4,h5,h6,table {
 
 .image-price {
     max-width: 40%;
-    /* min-width: 60%; */
-    /* max-height: 20%; */
     padding-bottom: 2%;
 }
 
@@ -185,30 +180,9 @@ h1,h2,h3,h4,h5,h6,table {
     text-align: right;
 }
 
-.user_name {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-    display: inline-block;
-}
-
-.user_email {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-    display: inline-block;
-}
-
-.user_password {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-    display: inline-block;
-}
-
+.user_name,
+.user_password,
+.user_email,
 .sign_button {
     width: 100%;
     max-width: 330px;
@@ -216,6 +190,7 @@ h1,h2,h3,h4,h5,h6,table {
     margin: 0 auto;
     display: inline-block;
 }
+
 
 .upload_photo {
     padding-top: 1rem;
@@ -315,21 +290,18 @@ h1,h2,h3,h4,h5,h6,table {
     margin-bottom: 1rem;
 }
 
-.admin-footer {
-    color: aliceblue;
-}
-
-
-
-
 
 @media only screen and (max-width: 1000px) {
 
-    body {
-        -o-background-size: cover;
-        -moz-bacgrround-size: cover;
-        -webkit-background-size: cover;
-        background-size: cover;
+    body:before {
+        content: '';
+        background-image: linear-gradient(rgba(51, 45, 45, 0.9), rgba(51, 45, 45, 0.6)), url("/static/images/gallery/img-bg-3.jpg");
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
     }
 
     .index-logo-text {
