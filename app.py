@@ -17,6 +17,10 @@ configure_uploads(app, images)
 Bootstrap(app)
 
 all_days = ('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье')
+telephone='+79313282819'
+address='6 линия В.О. дом 61'
+email='info@proiskusstvo.ru'
+vk='https://vk.com/publicproiskusstvo'
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -35,7 +39,17 @@ def home():
    data = Course.query.all()
    teachers = Teacher.query.all()
    schl = data_for_rsp()  
-   return render_template('index.html', price=data, teachers=teachers, all_days=all_days, schelude=schl)
+   return render_template(
+      'index.html', 
+      price=data, 
+      teachers=teachers, 
+      all_days=all_days, 
+      schelude=schl,
+      telephone=telephone,
+      address=address,
+      email=email,
+      vk=vk
+      )
 
 @app.route('/admin', methods=['GET', 'POST'])
 def sign():
