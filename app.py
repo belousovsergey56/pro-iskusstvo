@@ -11,7 +11,6 @@ from functools import wraps
 import os
 import sys
 
-# Имплементация экземпляра объекта UloadSet, добавление в конфигурацию приложение и экземляр класса, подключение bootstrap
 images = UploadSet('images', IMAGES)
 configure_uploads(app, images)
 Bootstrap(app)
@@ -184,7 +183,7 @@ def add_course():
          name=form.name.data,
          avatar=f'/static/images/{filename}' if form.path_photo.data else '/static/images/default_course.jpeg',
          description=form.description.data,
-         price=int(form.price.data)
+         price=form.price.data
       )
       db.session.add(new_course)
       db.session.commit()
