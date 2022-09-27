@@ -1,11 +1,10 @@
 body {
     text-align: center;
     font-family: 'Raleway', sans-serif;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-image: linear-gradient(rgba(51, 45, 45, 0.9), rgba(51, 45, 45, 0.6)), url("/static/images/gallery/img-bg-3.jpg");
     background-repeat: no-repeat;
-    -o-background-size: cover;
-    -moz-bacgrround-size: cover;
-    -webkit-background-size: cover;
     background-size: cover;
     background-position: unset;
     background-attachment: fixed;
@@ -23,13 +22,13 @@ table {
 }
 
 
-.index-logo-text, 
-.navbar-brand, 
-.nav-link, 
-.text-message, 
-.admin-footer, 
+.index-logo-text,
+.navbar-brand,
+.nav-link,
+.text-message,
+.admin-footer,
 .about-txt,
-body  {
+body {
     color: aliceblue;
 }
 
@@ -52,7 +51,7 @@ body  {
 }
 
 .about-body-header {
-    font-weight:bolder;
+    font-weight: bolder;
 }
 
 #services {
@@ -253,6 +252,10 @@ body  {
     padding-bottom: 2%;
 }
 
+.favicon {
+    border-radius: 100%;
+}
+
 .left_column {
     text-align: right;
 }
@@ -291,17 +294,12 @@ body  {
 }
 
 
-@media only screen and (max-width: 1000px) {
-
-    body:before {
-        content: '';
-        background-image: linear-gradient(rgba(51, 45, 45, 0.9), rgba(51, 45, 45, 0.6)), url("/static/images/gallery/img-bg-3.jpg");
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
+@media (max-width: 1600px) {
+    body {
+        background: #2D2D2C;
+        background: -webkit-linear-gradient(top, #2D2D2C, #C0BEBF);
+        background: -moz-linear-gradient(top, #2D2D2C, #C0BEBF);
+        background: linear-gradient(to bottom, #2D2D2C, #C0BEBF);
     }
 
     .index-logo-text {
@@ -326,7 +324,7 @@ body  {
     }
 
     .about-body-header {
-        font-weight:bolder;
+        font-weight: bolder;
     }
 
     .about-text {
@@ -365,4 +363,5 @@ body  {
     .carousel-control-next-icon {
         height: 1.5rem;
     }
+
 }
