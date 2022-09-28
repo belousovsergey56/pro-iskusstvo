@@ -294,14 +294,25 @@ body {
 }
 
 
-@media (max-width: 1600px) {
-    body {
+@media (-webkit-transition) {
+    
+    /* body {
         background: #2D2D2C;
         background: -webkit-linear-gradient(top, #2D2D2C, #C0BEBF);
         background: -moz-linear-gradient(top, #2D2D2C, #C0BEBF);
         background: linear-gradient(to bottom, #2D2D2C, #C0BEBF);
+    } */
+
+    body {
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-origin: content-box;
     }
 
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
     .index-logo-text {
         font-size: small;
     }
@@ -336,7 +347,202 @@ body {
     }
 
     .image-price {
-        max-width: 80%;
+        max-width: 28rem;
+
+    }
+
+    .services-text {
+        font-size: 15px;
+    }
+
+    .teacher-text {
+        font-size: 15px;
+    }
+
+    .row-text {
+        font-size: 14px;
+    }
+
+    .col-text {
+        font-size: 13px;
+    }
+
+    .carousel-control-prev-icon {
+        height: 2rem;
+    }
+
+    .carousel-control-next-icon {
+        height: 2rem;
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .index-logo-text {
+        font-size: small;
+    }
+
+
+    .about-header-1 {
+        font-size: 15px;
+    }
+
+    .about-header-2 {
+        font-size: 35px;
+    }
+
+    .about-lozung {
+        font-size: 10px;
+    }
+
+    .about-body {
+        padding: 0;
+    }
+
+    .about-body-header {
+        font-weight: bolder;
+    }
+
+    .about-text {
+        font-size: 15px;
+    }
+
+    .about-txt {
+        padding-top: 18%;
+    }
+
+    .image-price {
+        max-width: 25rem;
+
+    }
+
+    .services-text {
+        font-size: 15px;
+    }
+
+    .teacher-text {
+        font-size: 15px;
+    }
+
+    .row-text {
+        font-size: 14px;
+    }
+
+    .col-text {
+        font-size: 13px;
+    }
+
+    .carousel-control-prev-icon {
+        height: 1.8rem;
+    }
+
+    .carousel-control-next-icon {
+        height: 1.8rem;
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media screen and (max-width: 767px) {
+    .index-logo-text {
+        font-size: small;
+    }
+
+
+    .about-header-1 {
+        font-size: 15px;
+    }
+
+    .about-header-2 {
+        font-size: 35px;
+    }
+
+    .about-lozung {
+        font-size: 10px;
+    }
+
+    .about-body {
+        padding: 0;
+    }
+
+    .about-body-header {
+        font-weight: bolder;
+    }
+
+    .about-text {
+        font-size: 15px;
+    }
+
+    .about-txt {
+        padding-top: 18%;
+    }
+
+    .image-price {
+        max-width: 25rem;
+
+    }
+
+    .services-text {
+        font-size: 15px;
+    }
+
+    .teacher-text {
+        font-size: 15px;
+    }
+
+    .row-text {
+        font-size: 14px;
+    }
+
+    .col-text {
+        font-size: 13px;
+    }
+
+    .carousel-control-prev-icon {
+        height: 1.8rem;
+    }
+
+    .carousel-control-next-icon {
+        height: 1.8rem;
+    }
+}
+
+/* Landscape phones and smaller */
+@media screen and (max-width: 480px) {
+    .index-logo-text {
+        font-size: small;
+    }
+
+
+    .about-header-1 {
+        font-size: 15px;
+    }
+
+    .about-header-2 {
+        font-size: 35px;
+    }
+
+    .about-lozung {
+        font-size: 10px;
+    }
+
+    .about-body {
+        padding: 0;
+    }
+
+    .about-body-header {
+        font-weight: bolder;
+    }
+
+    .about-text {
+        font-size: 12px;
+    }
+
+    .about-txt {
+        padding-top: 18%;
+    }
+
+    .image-price {
+        max-width: 15rem;
 
     }
 
@@ -362,6 +568,14 @@ body {
 
     .carousel-control-next-icon {
         height: 1.5rem;
+    }
+}
+
+@media screen and (max-height: 810px) {
+
+    .image-price {
+        max-width: 20rem;
+
     }
 
 }
