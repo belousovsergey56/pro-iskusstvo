@@ -1,0 +1,6 @@
+services:
+  repin_art:
+    image: belousov56/repin_art:latest
+    restart: always
+    ports:
+      - "5000:5000"
