@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.7-alpine3.18
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python3", "main.py"]
+CMD ["python3", "app.py"]
